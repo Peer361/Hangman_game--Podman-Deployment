@@ -1,0 +1,255 @@
+/* index.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0a0a0a;
+}
+
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.game-box {
+  background: #1f1f1f;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  padding: 2.5rem;
+  max-width: 650px;
+  width: 100%;
+  border: 1px solid #333;
+}
+
+.game-title {
+  font-size: 2.5rem;
+  color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  color: #8b5cf6;
+}
+
+.btn-start {
+  background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.word-box {
+  margin-bottom: 2rem;
+}
+
+.letters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.letter-space {
+  width: 48px;
+  height: 48px;
+  border-bottom: 4px solid #8b5cf6;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.letter-reveal {
+  animation: bounce 0.5s ease-in-out;
+  color: #34d399;
+}
+
+.word-success {
+  animation: successPulse 1s infinite;
+  color: #34d399;
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.guess-input {
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+  text-align: center;
+  border: 2px solid #4b5563;
+  border-radius: 8px;
+  background: #2d2d2d;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.guess-input:focus {
+  outline: none;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+.btn-guess {
+  background: #8b5cf6;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-guess:hover {
+  background: #7c3aed;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.attempts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  color: #9ca3af;
+}
+
+.icon.skull {
+  width: 28px;
+  height: 28px;
+  color: #9ca3af;
+}
+
+.icon.skull.red {
+  color: #ef4444;
+}
+
+.attempt-count .highlight {
+  color: #8b5cf6;
+  font-weight: bold;
+}
+
+.guessed-section {
+  text-align: center;
+  color: #9ca3af;
+}
+
+.guessed-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.guessed-letters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.guessed-letter {
+  background: #2d2d2d;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  border: 1px solid #4b5563;
+}
+
+/* Animations */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes successPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.attempts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  color: #9ca3af;
+  margin-bottom: 1rem;
+}
+
+.game-message {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  animation: messagePop 0.5s ease-out;
+}
+
+.success-message {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+  border: 1px solid #34d399;
+}
+
+.oops-message {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+.repeat-message {
+  background: rgba(234, 179, 8, 0.1);
+  color: #eab308;
+  border: 1px solid #eab308;
+}
+@keyframes messagePop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
