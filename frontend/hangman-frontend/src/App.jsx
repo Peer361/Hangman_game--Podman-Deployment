@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState, useEffect } from 'react';
 import { TowerControl as GameController, Skull } from 'lucide-react';
 import axios from 'axios';
@@ -70,7 +69,7 @@ function App() {
       const timer = setTimeout(() => {
         setShake(false);
         setRepeatLetter(false);
-      }, 1000); // Increased to 1000ms to give users time to read the message
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [shake, repeatLetter]);
@@ -87,14 +86,48 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className={`app-container ${gameLost ? 'game-lost' : ''} ${gameWon ? 'game-won' : ''}`}>
       <div className="game-box">
         <div className="text-center">
           <h1 className="game-title">
             <GameController className="icon" />
-            Hangman
+            Hangman Game
           </h1>
           
+          <div className="hangman-container">
+            <svg className="hangman-svg" viewBox="0 0 200 200">
+              {/* Gallows */}
+              <line className="gallows" x1="20" y1="180" x2="100" y2="180" />
+              <line className="gallows" x1="60" y1="180" x2="60" y2="20" />
+              <line className="gallows" x1="60" y1="20" x2="140" y2="20" />
+              <line className="gallows" x1="140" y1="20" x2="140" y2="40" />
+              
+              {/* Rope */}
+              <line 
+                className={`rope ${attempts === 0 ? 'snap' : ''}`} 
+                x1="140" 
+                y1="40" 
+                x2="140" 
+                y2="55" 
+              />
+              
+              {/* Hangman parts */}
+              <circle className={`hangman-part ${attempts < 6 ? 'visible' : ''}`} cx="140" cy="55" r="15" />
+              <line className={`hangman-part ${attempts < 5 ? 'visible' : ''}`} x1="140" y1="70" x2="140" y2="110" />
+              <line className={`hangman-part ${attempts < 4 ? 'visible' : ''}`} x1="140" y1="80" x2="120" y2="70" />
+              <line className={`hangman-part ${attempts < 3 ? 'visible' : ''}`} x1="140" y1="80" x2="160" y2="70" />
+              <line className={`hangman-part ${attempts < 2 ? 'visible' : ''}`} x1="140" y1="110" x2="120" y2="130" />
+              <line className={`hangman-part ${attempts < 1 ? 'visible' : ''}`} x1="140" y1="110" x2="160" y2="130" />
+              
+              {/* Face */}
+              <g className={`hangman-face ${gameLost ? 'visible' : ''}`}>
+                <line x1="135" y1="50" x2="145" y2="60" />
+                <line x1="145" y1="50" x2="135" y2="60" />
+                <path d="M130,65 Q140,75 150,65" />
+              </g>
+            </svg>
+          </div>
+
           <button onClick={startGame} className="btn-start">
             New Game
           </button>
